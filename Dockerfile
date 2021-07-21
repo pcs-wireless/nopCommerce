@@ -55,15 +55,18 @@ WORKDIR /src/Presentation/Nop.Web
 RUN dotnet publish Nop.Web.csproj -c Release -o /app/published
 
 # create the runtime instance 
-FROM mcr.microsoft.com/dotnet/aspnet:5.0-alpine AS runtime 
+FROM mcr.microsoft.com/dotnet/aspnet:5.0-focal AS runtime 
 
 # add globalization support
-RUN apk add --no-cache icu-libs
+# RUN apk add --no-cache icu-libs
+RUN apt-get update
+RUN apt-get install -y libicu-dev fontconfig-config
 ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false
 
 # installs required packages
-RUN apk add libgdiplus --no-cache --repository http://dl-3.alpinelinux.org/alpine/edge/testing/ --allow-untrusted
-RUN apk add libc-dev --no-cache
+# RUN apk add libgdiplus --no-cache --repository http://dl-3.alpinelinux.org/alpine/edge/testing/ --allow-untrusted
+# RUN apk add libc-dev --no-cache
+RUN apt-get install -y libgdiplus linux-libc-dev
 
 # copy entrypoint script
 COPY ./entrypoint.sh /entrypoint.sh

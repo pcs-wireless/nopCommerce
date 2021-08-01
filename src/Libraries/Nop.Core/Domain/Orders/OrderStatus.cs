@@ -23,6 +23,11 @@ namespace Nop.Core.Domain.Orders
         /// <summary>
         /// Cancelled
         /// </summary>
-        Cancelled = 40
+        Cancelled = 40,
+
+        /// <summary>
+        /// Approve
+        /// </summary>
+        Approve = 50
     }
 }

@@ -1,5 +1,4 @@
 ﻿@model OrderSearchModel
-
 @inject IStoreService storeService
 @using Nop.Services.Stores
 
@@ -375,6 +374,13 @@
                                         Width = "100",
                                     });
                                 }
+                                gridModel.ColumnCollection.Add(new ColumnProperty(nameof(OrderModel.OrderStatus))
+                                {
+                                    Title = @"Action",
+                                    Width = "50",
+                                    ClassName = NopColumnClassDefaults.CenterAll,
+                                    Render = new RenderCustom("RenderButtonOrderStat")
+                                });
                                 gridModel.ColumnCollection.Add(new ColumnProperty(nameof(OrderModel.Id))
                                 {
                                     Title = T("Admin.Common.View").Text,
@@ -384,25 +390,26 @@
                                 });
                                 var orderSummaryColumnNumber = 8;
                             }
-
                             @await Html.PartialAsync("Table", gridModel)
-
                             <script>
+                            function RenderButtonOrderStat(data, type, row, meta) {
+                                var status;
+                                switch(row.OrderStatusId) {
+                                    case 50: return '<span id="changeOrderStat" onclick="markAsApprove('+ row.CustomOrderNumber +')" class="grid-report-item green" style="cursor:not-allowed;pointer-events: none;background-color: gray;" >Approve</span>'; break;
+                                    case 10:
+                                    case 20:
+                                    case 30:
+                                    case 40: return '<span id="changeOrderStat" onclick="markAsApprove('+ row.CustomOrderNumber +')" class="grid-report-item green" style="cursor: pointer;" >Approve</span>'; break;
+                                }
+                            }
                             function renderColumnOrderStatus(data, type, row, meta) {
                                 var color;
                                 switch (row.OrderStatusId) {
-                                case 10:
-                                    color = 'yellow';
-                                    break;
-                                case 20:
-                                    color = 'blue';
-                                    break;
-                                case 30:
-                                    color = 'green';
-                                    break;
-                                case 40:
-                                    color = 'red';
-                                    break;
+                                case 10: color = 'yellow'; break;
+                                case 20: color = 'yellow'; break;
+                                case 30: color = 'green'; break;
+                                case 40: color = 'red'; break;
+                                case 50: color = 'blue'; break;
                                 }
                                 return '<span class="grid-report-item ' + color + '">' + data + '</span >';
                             }
@@ -471,7 +478,19 @@
     <input type="hidden" id="selectedIds" name="selectedIds" value="" />
 </form>
 
+<form asp-controller="Order" asp-action="Edit" method="post" id="changeStatus">
+    <input type="hidden" id="changeOrderStatId" name="id" value="#:Id#" />
+    <input type="hidden" id="changeStatusId" name="OrderStatusId" value="50" />
+    <input type="hidden" id="fromList" name="fromList" value="true" />
+    <button type="submit" name="btnSaveOrderStatus" id="btnSaveOrderStatus" hidden />
+</form>
+
 <script>
+    function markAsApprove(id) {
+        $('#changeStatus #changeOrderStatId').val(id);
+        $('#btnSaveOrderStatus').click();
+        return false;
+    };
     $(document).ready(function () {
         $('#exportxml-selected').click(function (e) {
             e.preventDefault();

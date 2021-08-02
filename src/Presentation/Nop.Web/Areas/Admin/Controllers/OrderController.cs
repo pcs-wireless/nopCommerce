@@ -804,7 +804,7 @@ namespace Nop.Web.Areas.Admin.Controllers
 
         [HttpPost, ActionName("Edit")]
         [FormValueRequired("btnSaveOrderStatus")]
-        public virtual async Task<IActionResult> ChangeOrderStatus(int id, OrderModel model)
+        public virtual async Task<IActionResult> ChangeOrderStatus(int id, OrderModel model, bool fromList=false)
         {
             if (!await _permissionService.AuthorizeAsync(StandardPermissionProvider.ManageOrders))
                 return AccessDeniedView();
@@ -836,7 +836,7 @@ namespace Nop.Web.Areas.Admin.Controllers
 
                 //prepare model
                 model = await _orderModelFactory.PrepareOrderModelAsync(model, order);
-
+                if(fromList) return RedirectToAction("List");
                 return View(model);
             }
             catch (Exception exc)

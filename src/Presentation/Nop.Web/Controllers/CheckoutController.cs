@@ -982,9 +982,10 @@ namespace Nop.Web.Controllers
                 return RedirectToRoute("CheckoutPaymentMethod");
 
             //Check whether payment info should be skipped
-            if (paymentMethod.SkipPaymentInfo ||
-                (paymentMethod.PaymentMethodType == PaymentMethodType.Redirection && _paymentSettings.SkipPaymentInfoStepForRedirectionPaymentMethods))
-            {
+            // if (paymentMethod.SkipPaymentInfo ||
+            //     (paymentMethod.PaymentMethodType == PaymentMethodType.Redirection && _paymentSettings.SkipPaymentInfoStepForRedirectionPaymentMethods))
+            // {
+            if (paymentMethod.SkipPaymentInfo) {
                 //skip payment info page
                 var paymentInfo = new ProcessPaymentRequest();
 
@@ -1250,9 +1251,10 @@ namespace Nop.Web.Controllers
         /// <returns>A task that represents the asynchronous operation</returns>
         protected virtual async Task<JsonResult> OpcLoadStepAfterPaymentMethod(IPaymentMethod paymentMethod, IList<ShoppingCartItem> cart)
         {
-            if (paymentMethod.SkipPaymentInfo ||
-                (paymentMethod.PaymentMethodType == PaymentMethodType.Redirection && _paymentSettings.SkipPaymentInfoStepForRedirectionPaymentMethods))
-            {
+            // if (paymentMethod.SkipPaymentInfo ||
+            //     (paymentMethod.PaymentMethodType == PaymentMethodType.Redirection && _paymentSettings.SkipPaymentInfoStepForRedirectionPaymentMethods))
+            // {
+            if (paymentMethod.SkipPaymentInfo) {
                 //skip payment info page
                 var paymentInfo = new ProcessPaymentRequest();
 

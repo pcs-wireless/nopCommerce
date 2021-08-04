@@ -41,7 +41,8 @@
         confirmOrderStepNumber--;
     }
 }
-<div class="page checkout-page">
+<div class="loader">Loading...</div>
+<div hidden class="page checkout-page">
     <div class="page-title panel-heading">
         <h1>@T("Checkout")</h1>
     </div>
@@ -139,7 +140,7 @@
                     </div>
                 </li>
             }
-            <li id="opc-payment_method" class="tab-section">
+            <li hidden id="opc-payment_method" class="tab-section">
                 <div class="step-title">
                     <span class="number">@paymentMethodStepNumber</span>
                     <h2>@T("Checkout.PaymentMethod")</h2>
@@ -166,7 +167,7 @@
                     </div>
                 </div>
             </li>
-            <li id="opc-payment_info" class="tab-section">
+            <li hidden id="opc-payment_info" class="tab-section">
                 <div class="step-title">
                     <span class="number">@paymentInfoStepNumber</span>
                     <h2>@T("Checkout.PaymentInfo")</h2>
@@ -180,18 +181,18 @@
                     <script asp-location="Footer">
                         PaymentInfo.init('#co-payment-info-form', '@(storeLocation)checkout/OpcSavePaymentInfo/');
                     </script>
-                    <div class="buttons" id="payment-info-buttons-container">
+                   <div class="buttons" id="payment-info-buttons-container">
                         <p class="back-link">
                             <a href="#" class="btn btn-primary" onclick="Checkout.back(); return false;"><i class="fa fa-arrow-circle-left"></i> @T("Common.Back")</a>
                         </p>
-                        <button type="button" class="btn btn-default payment-info-next-step-button" onclick="PaymentInfo.save()">@T("Common.Continue")</button>
+                        <button type="button" class="btn btn-default payment-info-next-step-button" id="saveInfo" onclick="PaymentInfo.save()">@T("Common.Continue")</button>
                         <span class="please-wait" id="payment-info-please-wait" style="display: none;">@T("Common.LoadingNextStep")</span>
                     </div>
                 </div>
             </li>
             <li id="opc-confirm_order" class="tab-section">
                 <div class="step-title">
-                    <span class="number">@confirmOrderStepNumber</span>
+                    <!-- <span class="number">@confirmOrderStepNumber</span> -->
                     <h2>@T("Checkout.ConfirmOrder")</h2>
                 </div>
                 <div id="checkout-step-confirm-order" class="step a-item" style="display: none;">
@@ -223,5 +224,12 @@
             Accordion.hideSection('#opc-billing');
             Billing.save();
         }
+        $(document).ready(function() {
+            setTimeout(() => {
+              $(".loader").css("display", "none");
+              $(".checkout-page").removeAttr("hidden");
+              $("#saveInfo").click();
+            }, 1500);
+        });
     </script>
 </div>

@@ -66,7 +66,7 @@
         <div class="order-details-area">
             <div class="row">
                 <div class="billing-info-wrap col-sm-6 col-md-6">
-                    <div class="billing-info">
+                    <div hidden class="billing-info">
                         <div class="title">
                             <strong>@T("Order.BillingAddress")</strong>
                         </div>
@@ -189,11 +189,11 @@
                             @if (!string.IsNullOrEmpty(Model.PaymentMethod))
                             {
                                 <div class="payment-method-info">
-                                    <div class="title">
+                                    <div hidden class="title">
                                         <strong>@T("Order.Payment")</strong>
                                     </div>
                                     <ul class="info-list">
-                                        <li class="payment-method">
+                                        <li hidden class="payment-method">
                                             <span class="label">
                                                 @T("Order.Payment.Method"):
                                             </span>

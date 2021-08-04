@@ -3,7 +3,7 @@
 {
     <div class="order-review-data row">
         <div class="billing-info-wrap col-sm-6 col-md-6">
-            <div class="billing-info">
+            <div hidden class="billing-info">
                 <div class="title">
                     <strong>@T("Order.BillingAddress")</strong>
                 </div>
@@ -113,7 +113,7 @@
             </div>
             @if (!string.IsNullOrEmpty(Model.PaymentMethod))
             {
-                <div class="payment-method-info">
+                <div hidden class="payment-method-info">
                     <div class="title">
                         <strong>@T("Order.Payment")</strong>
                     </div>

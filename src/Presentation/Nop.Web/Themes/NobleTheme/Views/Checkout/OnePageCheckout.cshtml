@@ -133,7 +133,7 @@
                                 <p class="back-link">
                                     <a href="#" class="btn btn-primary" onclick="Checkout.back(); return false;"><i class="fa fa-arrow-circle-left"></i> @T("Common.Back")</a>
                                 </p>
-                                <button type="button" class="btn btn-default shipping-method-next-step-button" onclick="ShippingMethod.save()">@T("Common.Continue")</button>
+                                <button type="button" class="btn btn-default shipping-method-next-step-button" id="shippingSave" onclick="ShippingMethod.save()">@T("Common.Continue")</button>
                                 <span id="shipping-method-please-wait" class="please-wait" style="display: none;">@T("Common.LoadingNextStep")</span>
                             </div>
                         </form>

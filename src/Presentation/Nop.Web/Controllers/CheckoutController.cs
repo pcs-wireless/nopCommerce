@@ -753,8 +753,10 @@ namespace Nop.Web.Controllers
             //model
             var model = await _checkoutModelFactory.PrepareShippingMethodModelAsync(cart, await _customerService.GetCustomerShippingAddressAsync(await _workContext.GetCurrentCustomerAsync()));
 
-            if (_shippingSettings.BypassShippingMethodSelectionIfOnlyOne &&
-                model.ShippingMethods.Count == 1)
+            // if (_shippingSettings.BypassShippingMethodSelectionIfOnlyOne &&
+            //     model.ShippingMethods.Count == 1)
+            // {
+            if (_shippingSettings.BypassShippingMethodSelectionIfOnlyOne)
             {
                 //if we have only one shipping method, then a customer doesn't have to choose a shipping method
                 await _genericAttributeService.SaveAttributeAsync(await _workContext.GetCurrentCustomerAsync(),
@@ -884,8 +886,10 @@ namespace Nop.Web.Controllers
             //model
             var paymentMethodModel = await _checkoutModelFactory.PreparePaymentMethodModelAsync(cart, filterByCountryId);
 
-            if (_paymentSettings.BypassPaymentMethodSelectionIfOnlyOne &&
-                paymentMethodModel.PaymentMethods.Count == 1 && !paymentMethodModel.DisplayRewardPoints)
+            // if (_paymentSettings.BypassPaymentMethodSelectionIfOnlyOne &&
+            //     paymentMethodModel.PaymentMethods.Count == 1 && !paymentMethodModel.DisplayRewardPoints)
+            // {
+            if (_paymentSettings.BypassPaymentMethodSelectionIfOnlyOne)
             {
                 //if we have only one payment method and reward points are disabled or the current customer doesn't have any reward points
                 //so customer doesn't have to choose a payment method
@@ -1159,8 +1163,10 @@ namespace Nop.Web.Controllers
         protected virtual async Task<JsonResult> OpcLoadStepAfterShippingAddress(IList<ShoppingCartItem> cart)
         {
             var shippingMethodModel = await _checkoutModelFactory.PrepareShippingMethodModelAsync(cart, await _customerService.GetCustomerShippingAddressAsync(await _workContext.GetCurrentCustomerAsync()));
-            if (_shippingSettings.BypassShippingMethodSelectionIfOnlyOne &&
-                shippingMethodModel.ShippingMethods.Count == 1)
+            // if (_shippingSettings.BypassShippingMethodSelectionIfOnlyOne &&
+            //     shippingMethodModel.ShippingMethods.Count == 1)
+            // {
+            if (_shippingSettings.BypassShippingMethodSelectionIfOnlyOne)
             {
                 //if we have only one shipping method, then a customer doesn't have to choose a shipping method
                 await _genericAttributeService.SaveAttributeAsync(await _workContext.GetCurrentCustomerAsync(),
@@ -1201,8 +1207,10 @@ namespace Nop.Web.Controllers
                 //payment is required
                 var paymentMethodModel = await _checkoutModelFactory.PreparePaymentMethodModelAsync(cart, filterByCountryId);
 
-                if (_paymentSettings.BypassPaymentMethodSelectionIfOnlyOne &&
-                    paymentMethodModel.PaymentMethods.Count == 1 && !paymentMethodModel.DisplayRewardPoints)
+                // if (_paymentSettings.BypassPaymentMethodSelectionIfOnlyOne &&
+                //     paymentMethodModel.PaymentMethods.Count == 1 && !paymentMethodModel.DisplayRewardPoints)
+                // {
+                if (_paymentSettings.BypassPaymentMethodSelectionIfOnlyOne)
                 {
                     //if we have only one payment method and reward points are disabled or the current customer doesn't have any reward points
                     //so customer doesn't have to choose a payment method

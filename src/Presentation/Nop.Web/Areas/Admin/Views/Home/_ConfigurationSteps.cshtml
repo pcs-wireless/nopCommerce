@@ -107,6 +107,26 @@
                     </div>
 
                     <div class="col-4">
+                        <a class="configuration-step-link products-step" asp-action="Create" asp-controller="Product" asp-route-showtour="@true">
+                            <div class="row">
+                                <div class="col-12 col-xl-3">
+                                    <div class="configuration-step-icon">
+                                        <i class="fas fa-shopping-cart "></i>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-xl-9">
+                                    <h5>
+                                        3. &nbsp; @T("Admin.ConfigurationSteps.CreateProducts.Title")
+                                        <small class="text-muted">
+                                            @T("Admin.ConfigurationSteps.CreateProducts.Description")
+                                        </small>
+                                    </h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- <div class="col-4">
                         <a class="configuration-step-link shipping-step" asp-action="Providers" asp-controller="Shipping" asp-route-showtour="@true">
                             <div class="row">
                                 <div class="col-12 col-xl-3">
@@ -124,71 +144,10 @@
                                 </div>
                             </div>
                         </a>
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="row mb-2">
-                    <div class="col-4">
-                        <a class="configuration-step-link payments-step" asp-action="Methods" asp-controller="Payment" asp-route-showtour="@true">
-                            <div class="row">
-                                <div class="col-12 col-xl-3">
-                                    <div class="configuration-step-icon">
-                                        <i class="far fa-credit-card"></i>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-xl-9">
-                                    <h5>
-                                        4. &nbsp; @T("Admin.ConfigurationSteps.SetUpPayments.Title")
-                                        <small class="text-muted">
-                                            @T("Admin.ConfigurationSteps.SetUpPayments.Description")
-                                        </small>
-                                    </h5>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-4">
-                        <a class="configuration-step-link taxes-step" asp-action="Providers" asp-controller="Tax" asp-route-showtour="@true">
-                            <div class="row">
-                                <div class="col-12 col-xl-3">
-                                    <div class="configuration-step-icon">
-                                        <i class="fas fa-percent"></i>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-xl-9">
-                                    <h5>
-                                        5. &nbsp; @T("Admin.ConfigurationSteps.SetUpTaxes.Title")
-                                        <small class="text-muted">
-                                            @T("Admin.ConfigurationSteps.SetUpTaxes.Description")
-                                        </small>
-                                    </h5>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-4">
-                        <a class="configuration-step-link products-step" asp-action="Create" asp-controller="Product" asp-route-showtour="@true">
-                            <div class="row">
-                                <div class="col-12 col-xl-3">
-                                    <div class="configuration-step-icon">
-                                        <i class="fas fa-shopping-cart "></i>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-xl-9">
-                                    <h5>
-                                        6. &nbsp; @T("Admin.ConfigurationSteps.CreateProducts.Title")
-                                        <small class="text-muted">
-                                            @T("Admin.ConfigurationSteps.CreateProducts.Description")
-                                        </small>
-                                    </h5>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="row mb-4">
                     <div class="col-4">
                         <a class="configuration-step-link email-step" asp-action="List" asp-controller="EmailAccount" asp-route-showtour="@true">
                             <div class="row">
@@ -199,7 +158,7 @@
                                 </div>
                                 <div class="col-12 col-xl-9">
                                     <h5>
-                                        7. &nbsp; @T("Admin.ConfigurationSteps.CreateEmailAccounts.Title")
+                                        4. &nbsp; @T("Admin.ConfigurationSteps.CreateEmailAccounts.Title")
                                         <small class="text-muted">
                                             @T("Admin.ConfigurationSteps.CreateEmailAccounts.Description")
                                         </small>
@@ -219,7 +178,7 @@
                                 </div>
                                 <div class="col-12 col-xl-9">
                                     <h5>
-                                        8. &nbsp; @T("Admin.ConfigurationSteps.EditServicesInfo.Title")
+                                        5. &nbsp; @T("Admin.ConfigurationSteps.EditServicesInfo.Title")
                                         <small class="text-muted">
                                             @T("Admin.ConfigurationSteps.EditServicesInfo.Description")
                                         </small>
@@ -228,8 +187,48 @@
                             </div>
                         </a>
                     </div>
+                    <!-- <div class="col-4">
+                        <a class="configuration-step-link payments-step" asp-action="Methods" asp-controller="Payment" asp-route-showtour="@true">
+                            <div class="row">
+                                <div class="col-12 col-xl-3">
+                                    <div class="configuration-step-icon">
+                                        <i class="far fa-credit-card"></i>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-xl-9">
+                                    <h5>
+                                        4. &nbsp; @T("Admin.ConfigurationSteps.SetUpPayments.Title")
+                                        <small class="text-muted">
+                                            @T("Admin.ConfigurationSteps.SetUpPayments.Description")
+                                        </small>
+                                    </h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div> -->
 
-                    <div class="col-4">
+                    <!-- <div class="col-4">
+                        <a class="configuration-step-link taxes-step" asp-action="Providers" asp-controller="Tax" asp-route-showtour="@true">
+                            <div class="row">
+                                <div class="col-12 col-xl-3">
+                                    <div class="configuration-step-icon">
+                                        <i class="fas fa-percent"></i>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-xl-9">
+                                    <h5>
+                                        5. &nbsp; @T("Admin.ConfigurationSteps.SetUpTaxes.Title")
+                                        <small class="text-muted">
+                                            @T("Admin.ConfigurationSteps.SetUpTaxes.Description")
+                                        </small>
+                                    </h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div> -->
+                </div>
+                <!-- <div class="row mb-4"> -->
+                    <!-- <div class="col-4">
                         <a class="configuration-step-link copyright-step" href="@(OfficialSite.CopyrightRemovalKey)@Utm.OnAdminConfigurationSteps" target="_blank">
                             <div class="row">
                                 <div class="col-12 col-xl-3">
@@ -247,8 +246,8 @@
                                 </div>
                             </div>
                         </a>
-                    </div>
-                </div>
+                    </div> -->
+                <!-- </div> -->
             </div>
         </div>
     </div>

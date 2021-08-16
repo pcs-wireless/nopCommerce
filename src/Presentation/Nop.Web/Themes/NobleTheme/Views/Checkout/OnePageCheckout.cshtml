@@ -41,8 +41,7 @@
         confirmOrderStepNumber--;
     }
 }
-<div class="loader">Loading...</div>
-<div hidden class="page checkout-page">
+<div class="page checkout-page">
     <div class="page-title panel-heading">
         <h1>@T("Checkout")</h1>
     </div>
@@ -84,7 +83,7 @@
             </li>
             @if (Model.ShippingRequired)
             {
-                <li hidden id="opc-shipping" class="tab-section">
+                <li id="opc-shipping" class="tab-section">
                     <div class="step-title">
                         <span class="number">@shippingAddressStepNumber</span>
                         <h2>@T("Checkout.ShippingAddress")</h2>
@@ -193,6 +192,7 @@
             <li id="opc-confirm_order" class="tab-section">
                 <div class="step-title">
                     <!-- <span class="number">@confirmOrderStepNumber</span> -->
+                    <span class="number">2</span>
                     <h2>@T("Checkout.ConfirmOrder")</h2>
                 </div>
                 <div id="checkout-step-confirm-order" class="step a-item" style="display: none;">
@@ -225,14 +225,9 @@
             Billing.save();
         }
         $(document).ready(function() {
-            setTimeout(() => {
-              $("#saveShipping").click();
-            }, 1000);
             $("#saveShipping").click(function() {
                 setTimeout(() => {
                     $("#saveInfo").click();
-                    $(".loader").css("display", "none");
-                    $(".checkout-page").removeAttr("hidden");
                 }, 1000);
             });
         });

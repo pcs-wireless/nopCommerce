@@ -16,7 +16,7 @@
             </div>
             @foreach (var message in Model.Messages)
             {
-                <div class="@(Model.IsApplied ? "message-success" : "message-failure") message bg-danger">
+                <div class="@(Model.IsApplied ? "message-success" : "message-failure")">
                     @message
                 </div>
             }

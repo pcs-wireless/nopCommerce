@@ -40,7 +40,17 @@ var Accordion = {
             location.hash = section.attr('id');
 
             $(document).trigger({ type: "accordion_section_opened", previousSectionId: previousSectionId, currentSectionId: this.currentSectionId });
-            
+
+            if (section[0].id == 'opc-payment_info') {
+                var checkExist = setInterval(function() {
+                    var elem = $("#saveInfo").length;
+                    if (elem) {
+                       $("#saveInfo").click();
+                       clearInterval(checkExist);
+                    }
+                 }, 100); // check every 100ms
+            }
+
             if (this.disallowAccessToNextSections) {
                 var pastCurrentSection = false;
                 for (var i = 0; i < this.sections.length; i++) {

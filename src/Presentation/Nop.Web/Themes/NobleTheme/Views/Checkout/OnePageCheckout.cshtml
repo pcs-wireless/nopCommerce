@@ -206,7 +206,7 @@
                         <p class="back-link">
                             <a href="#" class="btn btn-primary" onclick="Checkout.back(); return false;"><i class="fa fa-arrow-circle-left"></i> @T("Common.Back")</a>
                         </p>
-                        <button type="button" class="btn btn-default confirm-order-next-step-button" onclick="ConfirmOrder.save()">@T("Common.Confirm")</button>
+                        <button type="button" class="btn btn-default confirm-order-next-step-button" id="confirmOrder-button" onclick="ConfirmOrder.save()">@T("Common.Confirm")</button>
                         <span class="please-wait" id="confirm-order-please-wait" style="display: none;">@T("Checkout.SubmittingOrder")</span>
                     </div>
                 </div>
@@ -224,12 +224,5 @@
             Accordion.hideSection('#opc-billing');
             Billing.save();
         }
-        $(document).ready(function() {
-            $("#saveShipping").click(function() {
-                setTimeout(() => {
-                    $("#saveInfo").click();
-                }, 1000);
-            });
-        });
     </script>
 </div>

@@ -21,7 +21,10 @@
         },
         "dockerEnableCI": {
             "type": "bool",
-            "defaultValue": true
+            "defaultValue": false,
+            "metadata": {
+                "description": "Make sure to set it to false if provisioning for production."
+            }
         },
         "dockerRegistryPassword": {
             "type": "string",
